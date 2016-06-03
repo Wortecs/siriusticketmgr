@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -20,6 +19,7 @@ func main() {
 
 	router := gin.Default()
 	router.GET("/", mainHandler)
+
 	router.Run(":8080")
-	fmt.Println("Hello world")
+
 }
