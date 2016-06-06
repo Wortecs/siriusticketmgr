@@ -4,8 +4,7 @@
 }
 
 .blue-title {
-	background: #3949AB;
-	font-family: Roboto,"Helvetica Neue",sans-serif;
+	background: #1e88e5;
 	color: rgba(255,255,255,0.87);
 	font-size: 1.3em;
 
@@ -32,7 +31,7 @@ md-list-item {
 }
 
 .calc {
-	height: calc(100% - 50px);
+	height: calc(100% - 64px);
 }
 
 .list-task {
@@ -69,7 +68,7 @@ md-list-item {
 	
 	z-index: 0;
 	
-	height: 45%;
+	height: 50%;
 	width: 100%;
 	background-color: #81d4fa;
 }
@@ -90,58 +89,11 @@ md-list-item {
 	font-weight: inherit;
 }
 
-.circle {
+.fab-button {
 	position: absolute;
-	height: 150px;
-	width: 150px;
-	top: calc(45% - 75px);
-	right: 10%;
-	background: #fff176;
-    border-radius: 75px;
+	width: 50px;
+	height: 50px;
+	bottom: 2%;
+	right: 2%;
+	z-index: 3;
 }
-
-.cloud {
-	
-  position: absolute;
-  z-index: 1;	
- 
-  width: 300px;
-  height: 100px;
-  border-radius: 100px;
-  background: #ffffff;
-	
-	transform: scale(0.5);
-}
-.cloud:before,.cloud:after{
-  content: '';
-  border-radius: 100px;
-  position: absolute;
-  background: #ffffff;
-}
-.cloud:before{
-  width: 100px;
-  height: 100px;
-  top: -50px;
-  left: 45px;
-}
-.cloud:after{
-  width: 160px;
-  height: 160px;
-  top: -70px;
-  right: 45px;
-}
-
-.moon {
-	
-  position: absolute;	
-  top:10%;
-	right: 10%;
-
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: inset -1.5rem 0 whitesmoke;
-  transform: rotate(-25deg);
-}
-
-
