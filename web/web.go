@@ -7,7 +7,6 @@ var Templates map[string]*template.Template
 type TemplateParams struct {
 	IsAdmin    bool
 	IsSuperior bool
-	IsLogin    bool
 	Link       string
 }
 

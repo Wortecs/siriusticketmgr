@@ -7,8 +7,9 @@
 }
 
 .list {
-	height: calc(100% - 130px) !important;
+height: 650px !important;
 	text-overflow: clip;
+	
 }
 
 .fab-button {

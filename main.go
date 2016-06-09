@@ -61,7 +61,7 @@ func main() {
 		err := web.Templates["main"].ExecuteTemplate(
 			c.Writer,
 			"base",
-			web.TemplateParams{false, false, false, "/login"},
+			web.TemplateParams{true, false, "/login"},
 		)
 
 		if err != nil {
