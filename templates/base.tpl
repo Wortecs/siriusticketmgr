@@ -16,9 +16,16 @@
 
 
     <div ng-cloak>
-
-		<md-toolbar>
-		<div class="md-toolbar-tools">
+		<md-toolbar style="background-color: #00695C">
+			
+			<div class="md-toolbar-tools">
+				
+				<md-button >
+					Главная
+				</md-button>
+				<md-button >
+					Управление
+				</md-button>
 				{% if .IsAdmin %}
 					<md-button >
 						Администрирование
@@ -33,19 +40,19 @@
 
 				<span flex></span>
 
-				<md-button class="md-icon-button" ng-href="{% .Link %}" target="_self">
-				  <md-icon  md-svg-icon="/static/img/home.svg"></md-icon>
-				</md-button>
-
 				<md-button class="md-icon-button">
 				  <md-icon md-svg-icon="/static/img/profile.svg"></md-icon>
 				</md-button>
-	
-		</div>
+				
+			</div>
+			
 		</md-toolbar>
+		
+		{%template "body" .%}
+		
 	</div>
 
-	{%template "body" .%}
+	
 
 	<!--CODE HERE-->
     <!-- Angular Material requires Angular.js Libraries -->
