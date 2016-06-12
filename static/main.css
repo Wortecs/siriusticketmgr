@@ -19,3 +19,14 @@ height: 600px !important;
 .login-block {
 	padding: 10px
 }
+
+.full-block {
+	margin-left : 5% !important;
+	margin-right : 5% !important;
+	width : 90%;
+}
+
+.input-block {
+	margin-left: 5px;
+	margin-right: 5px;
+}

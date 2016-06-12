@@ -1,5 +1,5 @@
-
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,112 +9,239 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.9/css/ripples.min.css">
-<!--    <link rel="stylesheet" type="text/css" href="/static/main.css">-->
-	<link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
 </head>
 
 <body ng-app="mainApp" ng-cloak>
 
-    <div ng-cloak>
-	<md-toolbar style="background-color:#00695C;">
-      <div class="md-toolbar-tools">
-        <md-button >
-			Главная
-        </md-button>
-		 <md-button >
-			Управление
-        </md-button><b></b>
-		 <md-button >
-			Администрирование
-        </md-button>
-		<md-button >
-			Отчет
-        </md-button>
-        <span flex></span>
-        <md-button class="md-icon-button">
-          <md-icon md-svg-icon="img/profile.svg"</md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-
-	
-		
-		<div layout="row" layout-align="center start" >
-		<div class="block md-whiteframe-5dp" style="margin-left:5%" flex="70" ng-controller="taskController">
-			<md-subheader class="md-primary ">Текущие заявки:
-
-			</md-subheader>
-
-			<md-content  class="list" >
-				<section >
-
-					<table class="table table-striped table-hover" style="font-size:1em !important">
-                     
-						   <tr >
-						
-                            <td>Дата подачи</td>
-                            <td>Тема</td>
-                            <td>Дата выполнения</td>
-                            <td>Статус</td>
-                            <td>Приоритет</td>
-							<td>Тип</td>
-						
-                        </tr>
-						
-						<tr ng-repeat="item in tasks" >
-                            <td style="vertical-align: middle">{{item.startDate}}</td>
-                            <td style="vertical-align: middle">{{item.theme}}</td>
-                            <td style="vertical-align: middle">{{item.endDate}}</td>
-                            <td style="vertical-align: middle">{{item.status | makeStatus}}</td>
-                            <td style="vertical-align: middle">{{item.priority | makePriority}}</td>
-							<td style="vertical-align: middle">{{item.type | makeType}}</td>
 <!--
-							<td>
-								<md-button style="font-size:0.9em !important; margin:0px !important;" class="md-primary" >закрыть</md-button>
-							</td>
+    <div ng-cloak>
+        <md-toolbar style="background-color:#00695C;">
+            <div class="md-toolbar-tools">
+                <md-button>
+                    Главная
+                </md-button>
+                <md-button>
+                    Управление
+                </md-button><b></b>
+                <md-button>
+                    Администрирование
+                </md-button>
+                <md-button>
+                    Отчет
+                </md-button>
+                <span flex></span>
+                <md-button class="md-icon-button">
+                    <md-icon md-svg-icon="img/profile.svg" </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
 -->
-                        </tr>
 
-					</table>
+<div>
+	<md-tabs md-dynamic-height md-border-bottom>
+		<md-tab label="Главная">
 
-				</section>
-			</md-content>
+			<div layout="row" layout-align="center start" style="margin-top:10px">
+				<div class="block md-whiteframe-5dp" style="margin-left:5%" flex="70" ng-controller="taskController">
+					<md-subheader class="md-primary ">
+						Текущие заявки:
+					</md-subheader>
 
-		</div>
+					<md-content class="list">
+						<section>
 
-		<div class="block md-whiteframe-5dp" style="margin-right:5%" flex="30" ng-controller="newsController">
-			<md-subheader class="md-primary ">Новости:</md-subheader>
+							<table class="table table-striped table-hover" style="font-size:1em !important">
 
-			<md-content  class="list"  >
-				<selection>
+								<tr>
 
-					<md-list style="height: 1% !important">
-						<md-list-item class="md-3-line md-long-text" ng-repeat="item in news"    >
+									<td>Дата подачи</td>
+									<td>Тема</td>
+									<td>Дата выполнения</td>
+									<td>Статус</td>
+									<td>Приоритет</td>
+									<td>Тип</td>
+
+								</tr>
+
+								<tr ng-repeat="item in tasks">
+									<td style="vertical-align: middle">{{item.startDate}}</td>
+									<td style="vertical-align: middle">{{item.theme}}</td>
+									<td style="vertical-align: middle">{{item.endDate}}</td>
+									<td style="vertical-align: middle">{{item.status | makeStatus}}</td>
+									<td style="vertical-align: middle">{{item.priority | makePriority}}</td>
+									<td style="vertical-align: middle">{{item.type | makeType}}</td>
+									<!--
+								<td>
+									<md-button style="font-size:0.9em !important; margin:0px !important;" class="md-primary" >закрыть</md-button>
+								</td>
+		-->
+								</tr>
+
+							</table>
+
+						</section>
+					</md-content>
+
+				</div>
+
+				<div class="block md-whiteframe-5dp" style="margin-right:5%" flex="30" ng-controller="newsController">
+					<md-subheader class="md-primary ">Новости:</md-subheader>
+
+					<md-content class="list">
+						<selection>
+
+							<md-list style="height: 1% !important">
+								<md-list-item class="md-3-line md-long-text" ng-repeat="item in news">
+
+									<div class="md-list-item-text" style="width:100% !important">
+										<h3>{{ item.theme }}</h3>
+
+										<p>{{ item.text }}</p>
+
+										<p align="right">{{ item.date }}</p>
+									</div>
+
+								</md-list-item>
+
+
+							</md-list>
+
+						</selection>
+					</md-content>
+
+				</div>
+
+			</div>
+			
+		</md-tab>
+		<md-tab label="Управление">
+			
+			<div layout="column" layout-align="center start" style="margin-top:10px; width: 100%">
+				
+				<div class="block full-block md-whiteframe-5dp" style="height : 400px" ng-controller="taskController" >
+					
+					<md-subheader class="md-primary ">
+						Заявки:
+					</md-subheader>
+					<md-content>
+						<section>
+
+							<table class="table table-striped table-hover" style="font-size:1em !important">
+
+								<tr>
+
+									<td>Дата подачи</td>
+									<td>Тема</td>
+									<td>Тип</td>
+									
+									<td>Дата выполнения</td>
+									<td>Статус</td>
+									<td>Приоритет</td>
+									
+									<td>Исполнитель</td>
+									<td></td>
+
+								</tr>
+
+								<tr ng-repeat="item in tasks">
+									<td style="vertical-align: middle">{{item.startDate}}</td>
+									<td style="vertical-align: middle">{{item.theme}}</td>
+									<td style="vertical-align: middle">{{item.type | makeType}}</td>
+									
+									<td style="vertical-align: middle">{{item.endDate}}</td>
+									<td style="vertical-align: middle">{{item.status | makeStatus}}</td>
+									<td style="vertical-align: middle">{{item.priority | makePriority}}</td>
+									
+									
+									
+								    <td style="vertical-align: middle">{{item.executor}}</td>
+									<td style="vertical-align: middle">
+									<md-button class="md-icon-button md-primary" aria-label="Закрыть заявку">
+										<md-icon md-svg-icon="/static/img/close.svg"></md-icon>
+									 </md-button>
+									</td>
+		
+								</tr>
+
+							</table>
+
+						</section>
+					</md-content>		
+					
+				</div>
+				
+				<div class="block full-block md-whiteframe-5dp" style="height : 350px"  ng-controller="newTaskController">
+					
+					<md-subheader class="md-primary ">
+						Новая заявка:
+					</md-subheader>
+					<div layout="column" style="padding:5px !important">
+						<div layout="row">
+							<md-input-container flex="60">
+								<label>Тема:</label>
+								<input ng-model="task.username" md-maxlength="50">
+							</md-input-container>
+
+							<md-input-container flex="20">
+								<label>Приоритет</label>
+								<md-select ng-model="task.priority">
+									<md-option value="1">
+										{{1| makePriority}}
+									</md-option>
+									<md-option value="2">
+										{{2| makePriority}}
+									</md-option>
+									<md-option value="3">
+										{{3| makePriority}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+
+							<md-input-container flex="20" class="input-block">
+								<label>Тип</label>
+								<md-select ng-model="task.type">
+									<md-option value="1">
+										{{1| makeType}}
+									</md-option>
+									<md-option value="2">
+										{{2| makeType}}
+									</md-option>
+									<md-option value="3">
+										{{3| makeType}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+							
+						</div>
 						
-						  	<div class="md-list-item-text"  style="width:100% !important"   >
-								<h3>{{ item.theme }}</h3>
-
-								<p >{{ item.text }}</p>
-
-								<p align="right" >{{ item.date }}</p>
-						  	</div>
+						<md-input-container>
+							<label>Содержание:</label>
+							<textarea ng-model="task.text" md-maxlength="500" rows="3" md-select-on-focus></textarea>
+                         </md-input-container>
 						
-						</md-list-item>
+						<div layout="row" layout-align="end center">
 						
+<!--							ТОДО ТЕГИ для поиска!-->
+							
+							<md-button class="md-raised md-primary" flex="40">Подать заявку</md-button>
+						</div>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</md-tab>
+		
+	</md-tabs>
+</div>
 
-					</md-list>
-
-				</selection>
-			</md-content>
-
-		</div>
-	
-	</div>	
-	</div>
 
 
-
-	<!--CODE HERE-->
+    <!--CODE HERE-->
     <!-- Angular Material requires Angular.js Libraries -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
@@ -127,71 +254,101 @@
     <!-- Your application bootstrap  -->
     <script type="text/javascript">
         var blank = angular.module('mainApp', ['ngMaterial']);
-		blank.controller("taskController", function($scope){
-			$scope.tasks = [ {}
-				
-			]
-		})
+        blank.controller("taskController", function($scope) {
+            $scope.tasks = [new Task("1c","01.01.2015","01.01.2015",1,2,1,"Semenov K.L")
 
-		blank.controller("newsController", function($scope){
-			$scope.news = []
-		})
+            ]
+        })
 
+        blank.controller("newsController", function($scope) {
+            $scope.news = []
+        })
+
+		blank.controller("newTaskController", function($scope) {
+            
+        })
+
+        blank.filter('makePriority', function() {
+            return function(item) {
+                switch (item) {
+                    case 1:
+                        return "Низкий"
+                    case 2:
+                        return "Средний"
+                    case 3:
+                        return "Высокий"
+                }
+
+            }
+        })
+        blank.filter('makeStatus', function() {
+            return function(item) {
+                switch (item) {
+                    case 1:
+                        return "Новая"
+                    case 2:
+                        return "Обрабатывается"
+                    case 3:
+                        return "Выполняется"
+                    case 4:
+                        return "На проверке"
+                    case 5:
+                        return "Выполнена"
+                    case 6:
+                        return "Закрыта"
+                }
+
+            }
+        })
+        blank.filter('makeType', function() {
+            return function(item) {
+                switch (item) {
+                    case 1:
+                        return "Ошибка"
+                    case 2:
+                        return "Инцидент"
+                    case 3:
+                        return "Обращение"
+
+                }
+
+            }
+        })
 		
-		blank.filter('makePriority', function () {
-			  return function (item) {
-				  switch(item){
-					  case 1: return "Низкий"
-					  case 2: return "Средний"
-					  case 3: return "Высокий"
-				  }
+		blank.filter('makeTypeInfo', function() {
+            return function(item) {
+                switch (item) {
+                    case 1:
+                        return "Ошибка - текст"
+                    case 2:
+                        return "Инцидент - текст"
+                    case 3:
+                        return "Обращение - текст"
 
-			  }
-		})
-		blank.filter('makeStatus', function () {
-			  return function (item) {
-				  switch(item){
-					  case 1: return "Новая"
-					  case 2: return "Обрабатывается"
-					  case 3: return "Выполняется"
-					  case 4: return "На проверке"
-					  case 5: return "Выполнена"
-					  case 6: return "Закрыта"
-				  }
+                }
 
-			  }
-		})
-		blank.filter('makeType', function () {
-			  return function (item) {
-				  switch(item){
-					  case 1: return "Ошибка"
-					  case 2: return "Инцидент"
-					  case 3: return "Обращение"
+            }
+        })
 
-				  }
+        class News {
+            constructor(theme, text, date) {
+                this.theme = theme;
+                this.text = text;
+                this.date = date;
+            }
+        }
 
-			  }
-		})
-
-		class News{
-			constructor(theme,text,date){
-				this.theme = theme;
-				this.text = text;
-				this.date = date;
-			}
-		}
-		
-		class Task{
-			constructor(theme, endDate, startDate, status, priority, type){
-				this.theme = theme;
-				this.endDate = endDate;
-				this.startDate = startDate;
-				this.status = status;
-				this.priority = priority;
-				this.type = type;
-			}
-		}
-		
+        class Task {
+            constructor(theme, endDate, startDate, status, priority, type, executor) {
+                this.theme = theme;
+                this.endDate = endDate;
+                this.startDate = startDate;
+                this.status = status;
+                this.priority = priority;
+                this.type = type;
+				this.executor = executor;
+            }
+        }
     </script>
 
 </body>

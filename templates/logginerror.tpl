@@ -1,5 +1,5 @@
-{%define "body"%}
-
+{%define "base"%}
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,22 +14,19 @@
 	<div style="height: 100%;" layout="row" layout-align="center center">
 
 		<div class="md-whiteframe-5dp block" style="width:400px">
-			<form method="POST" action="{% .LoginAddress %}">
-				<md-subheader class="md-no-sticky md-primary">Авторизация</md-subheader>
-				<div class="login-block">
-					<md-input-container class="md-block">
-						<label>Логин:</label>
-						<input required name="login" ng-model="user.login" md-maxlength="50">
-					</md-input-container>
-					<md-input-container class="md-block">
-						<label>Пароль:</label>
-						<input required name="password" type="password" ng-model="user.pasword" md-maxlength="50">
-					</md-input-container>
-					<div layout="row" layout-align="end center">
-						<md-button type="submit" class="md-raised md-primary" style="float: right;">Вход</md-button>
-					</div>
+			<md-subheader class="md-no-sticky md-primary">Ошибка входа в систему</md-subheader>
+			<div style="padding:10px">
+
+				Вами был введен неправильный логин или пароль
+				Обратитесь к сестемуному
+				<div layout="row" layout-align="end center">
+					<md-button type="submit" class="md-raised md-primary" ng-href="{% .LoginAddress %}" target="_self">
+						Вернутся на страницу входа
+					</md-button>
 				</div>
-			</form>
+
+			</div>
+
 		</div>
 
 	</div>

@@ -11,27 +11,22 @@ import (
 
 func main() {
 	//TODO goodkay to dababase: super_secret_key;
-	//store := sessions.NewCookieStore([]byte("super_secret_key"))
+	store := sessions.NewCookieStore([]byte("super_secret_key"))
 
 	router := gin.Default()
+	router.Use(sessions.Sessions("user", store))
 	//For html to get css js img
 	router.Static("/static", "./static")
-	router.GET("/", handler.LoginHandler)
+	router.GET("/", handler.LogginHandler)
 
-	router.POST("/", func(c *gin.Context) {
+	router.POST("/", handler.EnterHandler)
 
-		//TODO Find user in database
-		if handler.CheckLogin(c.PostForm("login"), c.PostForm("password")) {
-			session := sessions.Default(c)
-			session.Set("loggin", true)
-			session.Save()
-			afterLogin(c)
-		} else {
-			c.Redirect(302, "/incorect")
-		}
-	})
+	//router.POST("/main", handler.MainPageHandler)
 
-	// router.Use(sessions.Sessions("user", store))
+	router.GET("/main", handler.MainPageHandler)
+
+	router.GET("/incorect", handler.IncorrectLogginHandler)
+
 	// router.GET("/", mainHandler)
 
 	// router.NoRoute(pageNotFound)
@@ -77,9 +72,4 @@ func afterLogin(c *gin.Context) {
 	}
 	c.Writer.Write(file)
 
-}
-
-func checkLogin(login, password string) bool {
-
-	return true
 }

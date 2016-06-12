@@ -13,7 +13,6 @@
 
 <body ng-app="mainApp" ng-cloak>
 
-
     <div ng-cloak>
 		<md-toolbar style="background-color: #00695C">
 
