@@ -37,7 +37,9 @@
       </div>
     </md-toolbar>
 
-	<div layout="row" layout-align="center start">
+	
+		
+		<div layout="row" layout-align="center start" >
 		<div class="block md-whiteframe-5dp" style="margin-left:5%" flex="70" ng-controller="taskController">
 			<md-subheader class="md-primary ">Текущие заявки:
 
@@ -47,17 +49,18 @@
 				<section >
 
 					<table class="table table-striped table-hover" style="font-size:1em !important">
-                        <tr >
-					
+                     
+						   <tr >
+						
                             <td>Дата подачи</td>
                             <td>Тема</td>
                             <td>Дата выполнения</td>
                             <td>Статус</td>
                             <td>Приоритет</td>
 							<td>Тип</td>
-<!--							<td></td>-->
+						
                         </tr>
-
+						
 						<tr ng-repeat="item in tasks" >
                             <td style="vertical-align: middle">{{item.startDate}}</td>
                             <td style="vertical-align: middle">{{item.theme}}</td>
@@ -105,8 +108,8 @@
 			</md-content>
 
 		</div>
-	</div>
-
+	
+	</div>	
 	</div>
 
 
@@ -125,152 +128,16 @@
     <script type="text/javascript">
         var blank = angular.module('mainApp', ['ngMaterial']);
 		blank.controller("taskController", function($scope){
-			$scope.tasks = [
-				{
-				 theme: "1c dont work",
-				 endDate : "01.01.2015",
-				startDate : "01.01.2015",
-				status : 1,
-				priority: 2,
-				type : 1
-				},
-				{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},
-				{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},
-				{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},
-				{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},
-				{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},{
-				 theme: "1c dont work",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2},
-				{
-				 theme: "END",
-				 endDate : "10.01.2015",
-				 startDate : "01.01.2015",
-				status : 1,
-				priority: 3,
-				type : 2}
+			$scope.tasks = [ {}
+				
 			]
 		})
 
 		blank.controller("newsController", function($scope){
-			$scope.news = [
-				{
-				 theme: "1c dont work",
-				 text : "aasdasdasda sdasdasdasd asdsd",
-				 date : "01.01.2015"
-				},
-				{
-				 theme: "1c dont work",
-				 text : "aasdasdasdasdasdasdasd\ndd dddddsad sfdasasas asasasasasasasas asasasasasasasa sasasasasasasasa sasasasasasasa sasasasasasasasasasas asasasasasasasasasasasasasasas end",
-				 date : "01.01.2015"
-				},
-				{
-				 theme: "1c dont work",
-				 text : "aasdasdasdasdasdasdasd\ndd dddddsadsfdasasa sasasasasasasasas asasasasasasasa sasasasasasasasa sasasasasasasa sasasasasasasasasasas asasasasasasasasa sasasasasasas end",
-				 date : "01.01.2015"
-				}
-			]
+			$scope.news = []
 		})
 
+		
 		blank.filter('makePriority', function () {
 			  return function (item) {
 				  switch(item){
@@ -306,8 +173,25 @@
 			  }
 		})
 
-
-
+		class News{
+			constructor(theme,text,date){
+				this.theme = theme;
+				this.text = text;
+				this.date = date;
+			}
+		}
+		
+		class Task{
+			constructor(theme, endDate, startDate, status, priority, type){
+				this.theme = theme;
+				this.endDate = endDate;
+				this.startDate = startDate;
+				this.status = status;
+				this.priority = priority;
+				this.type = type;
+			}
+		}
+		
     </script>
 
 </body>

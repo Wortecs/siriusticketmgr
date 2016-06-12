@@ -7,11 +7,15 @@
 }
 
 .list {
-height: 650px !important;
+height: 600px !important;
 	text-overflow: clip;
 	
 }
 
 .fab-button {
 	position: absolute;
+}
+
+.login-block {
+	padding: 10px
 }

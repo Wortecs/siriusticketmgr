@@ -13,12 +13,12 @@
 </head>
 
 <body ng-app="mainApp" ng-cloak>
-    <div id="background-div"></div>
+
     <div style="height: 100%;" layout="row" layout-align="center center">
 
-        <div class="md-whiteframe-5dp width-login-form">
+        <div class="md-whiteframe-5dp block" style="width:400px">
             <form method="POST" action="http://134.249.153.238:8080/">
-                <md-subheader class="md-no-sticky blue-title header-form">Авторизация</md-subheader>
+                <md-subheader class="md-no-sticky md-primary">Авторизация</md-subheader>
                 <div class="login-block">
                     <md-input-container class="md-block">
                         <label>Логин:</label>
@@ -34,11 +34,9 @@
                 </div>
             </form>
         </div>
-
+ 	
     </div>
-    <div id="footer-div">
-        <h3>Create by HG</h3>
-    </div>
+  
 
     <!--CODE HERE-->
     <!-- Angular Material requires Angular.js Libraries -->

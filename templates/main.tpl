@@ -1,132 +1,142 @@
 {%define "body"%}
 
-<div layout="row" class="bg-main calc">
-    <div flex="65">
-        <div class=" block height100 md-whiteframe-5dp" ng-controller="tasksContoller" ng-cloak>
-            <md-subheader class="md-no-sticky blue-title">Текущие заявки:</md-subheader>
-            <div class="bs-component">
-                <table class="table table-striped table-hover ">
-                    <thead style="background-color: #eeeeee">
-                        <tr>
+<div layout="row" layout-align="center start" >
+		<div class="block md-whiteframe-5dp" style="margin-left:5%" flex="70" ng-controller="taskController">
+			<md-subheader class="md-primary ">Текущие заявки:
+
+			</md-subheader>
+
+			<md-content  class="list" >
+				<section >
+
+					<table class="table table-striped table-hover" style="font-size:1em !important">
+                     
+						   <tr >
+						
                             <td>Дата подачи</td>
                             <td>Тема</td>
                             <td>Дата выполнения</td>
                             <td>Статус</td>
                             <td>Приоритет</td>
-
+							<td>Тип</td>
+						
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-toggle="collapse" ng-repeat-start="item in tasks track by $index" data-target="#colapsed{{$index}}" class="clickable collapsed">
-                            <td>{{item.datestart}}</td>
-                            <td>{{item.theme}}</td>
-                            <td>{{item.dateend}}</td>
-                            <td>{{item.status}}</td>
-                            <td>{{item.priority}}</td>
+						
+						<tr ng-repeat="item in tasks" >
+                            <td style="vertical-align: middle">{{item.startDate}}</td>
+                            <td style="vertical-align: middle">{{item.theme}}</td>
+                            <td style="vertical-align: middle">{{item.endDate}}</td>
+                            <td style="vertical-align: middle">{{item.status | makeStatus}}</td>
+                            <td style="vertical-align: middle">{{item.priority | makePriority}}</td>
+							<td style="vertical-align: middle">{{item.type | makeType}}</td>
+<!--
+							<td>
+								<md-button style="font-size:0.9em !important; margin:0px !important;" class="md-primary" >закрыть</md-button>
+							</td>
+-->
                         </tr>
-                        <tr ng-repeat-end>
-                            <td colspan="5">
-                                <div layout="column" id="colapsed{{$index}}" class="collapse">
-                                    {{item.text}}
-                                    <div layout="row" layout-align="end center">
-                                        <md-button class="md-primary">Закрыть заявку</md-button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
 
-                </table>
+					</table>
 
-            </div>
+				</section>
+			</md-content>
 
-        </div>
-    </div>
-    <div layout="column" flex="35">
+		</div>
 
-        <div class="block md-whiteframe-5dp" ng-controller="newTaskContoller">
-            <md-subheader class="md-no-sticky blue-title">Новая заявка:</md-subheader>
+		<div class="block md-whiteframe-5dp" style="margin-right:5%" flex="30" ng-controller="newsController">
+			<md-subheader class="md-primary ">Новости:</md-subheader>
 
-            <md-input-container class="md-block">
-                <label>Тема:</label>
-                <input ng-model="task.theme" md-maxlength="50">
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Содержание:</label>
-                <textarea ng-model="task.text" md-maxlength="500" rows="3" md-select-on-focus></textarea>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Отдел:</label>
-                <md-select ng-model="task.department">
-                    <md-option ng-repeat="item in departments" value="{{item}}">
-                        {{item}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-            <div layout="row" layout-align="end center">
-                <md-button ng-click="taxTask($event)" class="md-raised md-primary">Подать заявку</md-button>
-            </div>
-        </div>
-        <div class=" block height100 md-whiteframe-5dp" ng-controller="newsContoller" ng-cloak>
-            <md-subheader class="md-no-sticky blue-title">Новости:</md-subheader>
-            <md-list>
-                <md-list-item class="md-3-line" ng-repeat="item in news">
-                    <div style="width: 100%;" class="md-list-item-text">
-                        <h3>{{item.title}}</h3>
-                        <p>{{item.text}}</p>
+			<md-content  class="list"  >
+				<selection>
 
-                        <p align="right">{{item.date}}</p>
+					<md-list style="height: 1% !important">
+						<md-list-item class="md-3-line md-long-text" ng-repeat="item in news"    >
+						
+						  	<div class="md-list-item-text"  style="width:100% !important"   >
+								<h3>{{ item.theme }}</h3>
 
-                    </div>
-                </md-list-item>
+								<p >{{ item.text }}</p>
 
-            </md-list>
+								<p align="right" >{{ item.date }}</p>
+						  	</div>
+						
+						</md-list-item>
+						
 
-        </div>
+					</md-list>
 
-    </div>
-</div>
+				</selection>
+			</md-content>
+
+		</div>
+	
+	</div>	
 
 {%end%}
 {%define "code"%}
+ var blank = angular.module('mainApp', ['ngMaterial']);
+		blank.controller("taskController", function($scope){
+			$scope.tasks = [ {}
+				
+			]
+		})
 
-blank.controller('newsContoller', function($scope) {
-    $scope.news = [{
-        title: "1c no work",
-        text: "1c not work blablabla",
-        date: "01.01.0001 00:00"
-    }, {
-        title: "1c work",
-        text: "1c work blablabla",
-        date: "01.01.0001 25:00"
-    }]
-})
+		blank.controller("newsController", function($scope){
+			$scope.news = []
+		})
 
+		
+		blank.filter('makePriority', function () {
+			  return function (item) {
+				  switch(item){
+					  case 1: return "Низкий"
+					  case 2: return "Средний"
+					  case 3: return "Высокий"
+				  }
 
+			  }
+		})
+		blank.filter('makeStatus', function () {
+			  return function (item) {
+				  switch(item){
+					  case 1: return "Новая"
+					  case 2: return "Обрабатывается"
+					  case 3: return "Выполняется"
+					  case 4: return "На проверке"
+					  case 5: return "Выполнена"
+					  case 6: return "Закрыта"
+				  }
 
+			  }
+		})
+		blank.filter('makeType', function () {
+			  return function (item) {
+				  switch(item){
+					  case 1: return "Ошибка"
+					  case 2: return "Инцидент"
+					  case 3: return "Обращение"
 
-blank.controller('newTaskContoller', function($scope) {
-    $scope.departments = ["ІТ Отедел", "Юр отдел"]
-})
+				  }
 
+			  }
+		})
 
-
-
-blank.controller('tasksContoller', function($scope) {
-    $scope.tasks = [{
-        datestart: "01.01.0001",
-        dateend: "01.01.0001",
-        status: "На обработке",
-        theme: "ЧТо-то там",
-        priority: "Низкий",
-        text: "Текст запроса"
-    }, {
-        datestart: "01.01.0001",
-        dateend: "01.01.0001",
-        status: "На обработке",
-        theme: "Еще что-то там",
-        priority: "Высокий",
-        text: "Текст запроса"
-    }]
-})
+		class News{
+			constructor(theme,text,date){
+				this.theme = theme;
+				this.text = text;
+				this.date = date;
+			}
+		}
+		
+		class Task{
+			constructor(theme, endDate, startDate, status, priority, type){
+				this.theme = theme;
+				this.endDate = endDate;
+				this.startDate = startDate;
+				this.status = status;
+				this.priority = priority;
+				this.type = type;
+			}
+		}
 {%end%}
