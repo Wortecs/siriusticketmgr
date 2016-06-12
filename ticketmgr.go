@@ -21,7 +21,7 @@ func main() {
 	router.POST("/", func(c *gin.Context) {
 
 		//TODO Find user in database
-		if handler.СheckLogin(c.PostForm("login"), c.PostForm("password")) {
+		if handler.CheckLogin(c.PostForm("login"), c.PostForm("password")) {
 			session := sessions.Default(c)
 			session.Set("loggin", true)
 			session.Save()
