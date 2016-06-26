@@ -9,12 +9,66 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.9/css/ripples.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 
 </head>
 
-<body ng-app="mainApp" ng-cloak>
+<body>
 
+	<!-- Toolbar -->
+	<div ng-app="titleApp">
+		<md-toolbar ng-controller="TitleController" class="title-style">
+			<div class="md-toolbar-tools">
+				
+				<md-button aria-label="Главная страница" ng-href="{{urls.main}}">
+				  Главная
+				</md-button>
+				
+				<md-button aria-label="Инструкции" ng-href="{{urls.instruction}}">
+				  Инструкции
+				</md-button>
+				
+				<md-button aria-label="Вопросы" ng-href="{{urls.issue}}">
+				  Вопросы
+				</md-button>
+				
+				<span flex></span>
+				
+				<md-button class="md-icon-button" aria-label="Профииль" ng-href="{{urls.profile}}">
+					<md-icon md-svg-icon="/static/img/profile.svg"></md-icon>
+				</md-button>
+				
+			</div>
+		</md-toolbar>
+	</div>
+	
+	<div ng-app="mainApp">
+	
+		<div style="height: 100%;" layout="row" layout-align="center center" ng-controller="LoginController">
+
+			<div class="md-whiteframe-5dp block" style="width:400px">
+				<form method="POST" action="{{login}}">
+					<md-subheader class="md-no-sticky md-primary">Авторизация</md-subheader>
+					<div class="login-block">
+						<md-input-container class="md-block">
+							<label>Логин:</label>
+							<input required name="loggin" ng-model="user.login" md-maxlength="50">
+						</md-input-container>
+						<md-input-container class="md-block">
+							<label>Пароль:</label>
+							<input required name="password" type="password" ng-model="user.pasword" md-maxlength="50">
+						</md-input-container>
+						<div layout="row" layout-align="end center">
+							<md-button type="submit" class="md-raised md-primary" style="float: right;">Вход</md-button>
+						</div>
+					</div>
+				</form>
+			</div>	
+		
+		</div>
+		
+	</div>
+	
 <!--
     <div ng-cloak>
         <md-toolbar style="background-color:#00695C;">
@@ -39,6 +93,9 @@
         </md-toolbar>
 -->
 
+	
+	
+<!--
 <div>
 	<md-tabs md-dynamic-height md-border-bottom>
 		<md-tab label="Главная">
@@ -72,11 +129,11 @@
 									<td style="vertical-align: middle">{{item.status | makeStatus}}</td>
 									<td style="vertical-align: middle">{{item.priority | makePriority}}</td>
 									<td style="vertical-align: middle">{{item.type | makeType}}</td>
-									<!--
+									
 								<td>
 									<md-button style="font-size:0.9em !important; margin:0px !important;" class="md-primary" >закрыть</md-button>
 								</td>
-		-->
+		
 								</tr>
 
 							</table>
@@ -223,7 +280,7 @@
 						
 						<div layout="row" layout-align="end center">
 						
-<!--							ТОДО ТЕГИ для поиска!-->
+							ТОДО ТЕГИ для поиска!
 							
 							<md-button class="md-raised md-primary" flex="40">Подать заявку</md-button>
 						</div>
@@ -238,8 +295,7 @@
 		
 	</md-tabs>
 </div>
-
-
+-->
 
     <!--CODE HERE-->
     <!-- Angular Material requires Angular.js Libraries -->
@@ -247,108 +303,114 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Angular Material Library -->
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
     <!-- Your application bootstrap  -->
+
+	<script src="/static/js/title.js"></script>
+	
     <script type="text/javascript">
         var blank = angular.module('mainApp', ['ngMaterial']);
-        blank.controller("taskController", function($scope) {
-            $scope.tasks = [new Task("1c","01.01.2015","01.01.2015",1,2,1,"Semenov K.L")
-
-            ]
-        })
-
-        blank.controller("newsController", function($scope) {
-            $scope.news = []
-        })
-
-		blank.controller("newTaskController", function($scope) {
-            
-        })
-
-        blank.filter('makePriority', function() {
-            return function(item) {
-                switch (item) {
-                    case 1:
-                        return "Низкий"
-                    case 2:
-                        return "Средний"
-                    case 3:
-                        return "Высокий"
-                }
-
-            }
-        })
-        blank.filter('makeStatus', function() {
-            return function(item) {
-                switch (item) {
-                    case 1:
-                        return "Новая"
-                    case 2:
-                        return "Обрабатывается"
-                    case 3:
-                        return "Выполняется"
-                    case 4:
-                        return "На проверке"
-                    case 5:
-                        return "Выполнена"
-                    case 6:
-                        return "Закрыта"
-                }
-
-            }
-        })
-        blank.filter('makeType', function() {
-            return function(item) {
-                switch (item) {
-                    case 1:
-                        return "Ошибка"
-                    case 2:
-                        return "Инцидент"
-                    case 3:
-                        return "Обращение"
-
-                }
-
-            }
-        })
 		
-		blank.filter('makeTypeInfo', function() {
-            return function(item) {
-                switch (item) {
-                    case 1:
-                        return "Ошибка - текст"
-                    case 2:
-                        return "Инцидент - текст"
-                    case 3:
-                        return "Обращение - текст"
-
-                }
-
-            }
-        })
-
-        class News {
-            constructor(theme, text, date) {
-                this.theme = theme;
-                this.text = text;
-                this.date = date;
-            }
-        }
-
-        class Task {
-            constructor(theme, endDate, startDate, status, priority, type, executor) {
-                this.theme = theme;
-                this.endDate = endDate;
-                this.startDate = startDate;
-                this.status = status;
-                this.priority = priority;
-                this.type = type;
-				this.executor = executor;
-            }
-        }
+		blank.controller("LoginController", function($scope){
+			$scope.login = 
+		})
+		
+//        blank.controller("taskController", function($scope) {
+//            $scope.tasks = [new Task("1c","01.01.2015","01.01.2015",1,2,1,"Semenov K.L")
+//
+//            ]
+//        })
+//
+//        blank.controller("newsController", function($scope) {
+//            $scope.news = []
+//        })
+//
+//		blank.controller("newTaskController", function($scope) {
+//            
+//        })
+//
+//        blank.filter('makePriority', function() {
+//            return function(item) {
+//                switch (item) {
+//                    case 1:
+//                        return "Низкий"
+//                    case 2:
+//                        return "Средний"
+//                    case 3:
+//                        return "Высокий"
+//                }
+//
+//            }
+//        })
+//        blank.filter('makeStatus', function() {
+//            return function(item) {
+//                switch (item) {
+//                    case 1:
+//                        return "Новая"
+//                    case 2:
+//                        return "Обрабатывается"
+//                    case 3:
+//                        return "Выполняется"
+//                    case 4:
+//                        return "На проверке"
+//                    case 5:
+//                        return "Выполнена"
+//                    case 6:
+//                        return "Закрыта"
+//                }
+//
+//            }
+//        })
+//        blank.filter('makeType', function() {
+//            return function(item) {
+//                switch (item) {
+//                    case 1:
+//                        return "Ошибка"
+//                    case 2:
+//                        return "Инцидент"
+//                    case 3:
+//                        return "Обращение"
+//
+//                }
+//
+//            }
+//        })
+//		
+//		blank.filter('makeTypeInfo', function() {
+//            return function(item) {
+//                switch (item) {
+//                    case 1:
+//                        return "Ошибка - текст"
+//                    case 2:
+//                        return "Инцидент - текст"
+//                    case 3:
+//                        return "Обращение - текст"
+//
+//                }
+//
+//            }
+//        })
+//
+//        class News {
+//            constructor(theme, text, date) {
+//                this.theme = theme;
+//                this.text = text;
+//                this.date = date;
+//            }
+//        }
+//
+//        class Task {
+//            constructor(theme, endDate, startDate, status, priority, type, executor) {
+//                this.theme = theme;
+//                this.endDate = endDate;
+//                this.startDate = startDate;
+//                this.status = status;
+//                this.priority = priority;
+//                this.type = type;
+//				this.executor = executor;
+//            }
+//        }
     </script>
 
 </body>

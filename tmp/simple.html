@@ -1,0 +1,109 @@
+<html>
+	
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Angular Material style sheet -->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+	
+	<!-- Base style	-->
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	
+</head>
+
+<body ng-app="mainApp">
+
+	<!-- Toolbar -->
+
+
+	<div ng-cloak>
+		<md-toolbar ng-controller="TitleController" class="title-style">
+			<div class="md-toolbar-tools">
+
+				<md-button aria-label="Главная страница" ng-href="{{urls.main}}">
+				  Главная
+				</md-button>
+
+				<md-button aria-label="Инструкции" ng-href="{{urls.instruction}}">
+				  Инструкции
+				</md-button>
+
+				<md-button aria-label="Вопросы" ng-href="{{urls.issue}}">
+				  Вопросы
+				</md-button>
+
+				<span flex></span>
+
+				<md-button class="md-icon-button" aria-label="Профииль" ng-href="{{urls.profile}}">
+					<md-icon md-svg-icon="/static/img/profile.svg"></md-icon>
+				</md-button>
+
+			</div>
+		</md-toolbar>
+	</div>
+
+
+	<div ng-cloak>
+		
+		<div style="height: 90%;" layout="row" layout-align="center center" ng-controller="IncorrectController" ng-cloak>
+
+			<div class="md-whiteframe-5dp block" style="width:400px">
+				
+					<md-subheader class="md-no-sticky md-primary">Некорректные данные пользователя</md-subheader>
+
+					<div class="login-block">
+
+						<div layout="row">
+							<div>Неверно введен логин или пароль</div>
+							
+							<md-icon md-svg-src="static/img/404.svg" style="width:48px"></md-icon>
+						</div>
+						<br>
+						
+						<div>{{subtext}}</div>
+						
+						<br>
+						<div layout="row" layout-align="end">
+						<md-button ng-href="{{loginUrl}}" class="md-primary" >На главную</md-button>
+						</div>
+					</div>
+
+				</form>
+			</div>	
+		
+		</div>
+		
+	</div>
+
+	
+
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+	<!-- Angular Material Library -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+	<!-- Base titile controller -->
+	<script src="/static/js/title.js"></script>
+	
+	<script type="text/javascript">
+		
+		blank.controller("IncorrectController", function($scope){
+			$scope.loginUrl = "https://angularjs.org/"
+			$scope.subtext	= "Обратитесь к системному администратору: 0382XXXXXX"
+		})
+		
+	</script>
+	
+</body>
+
+</html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->

@@ -1,49 +1,40 @@
-{%define "base"%}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.9/css/ripples.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-</head>
-<body ng-app="mainApp" ng-cloak>
-	<div style="height: 100%;" layout="row" layout-align="center center">
+{%define "body"%}
 
-		<div class="md-whiteframe-5dp block" style="width:400px">
-			<md-subheader class="md-no-sticky md-primary">Ошибка входа в систему</md-subheader>
-			<div style="padding:10px">
+<div style="height: 90%;" layout="row" layout-align="center center" ng-controller="IncorrectController" ng-cloak>
 
-				Вами был введен неправильный логин или пароль
-				Обратитесь к сестемуному
-				<div layout="row" layout-align="end center">
-					<md-button type="submit" class="md-raised md-primary" ng-href="{% .LoginAddress %}" target="_self">
-						Вернутся на страницу входа
-					</md-button>
-				</div>
+    <div class="md-whiteframe-5dp block" style="width:400px">
 
-			</div>
+        <md-subheader class="md-no-sticky md-primary">Некорректные данные пользователя</md-subheader>
 
-		</div>
+        <div class="login-block">
 
-	</div>
-  <!-- Angular Material requires Angular.js Libraries -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- Angular Material Library -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
-    <!-- Your application bootstrap  -->
-    <script type="text/javascript">
-        var blank = angular.module('mainApp', ['ngMaterial']);
-    </script>
+            <div layout="row">
+                <div>Неверно введен логин или пароль</div>
 
-</body>
+                <md-icon md-svg-src="/static/img/404.svg" style="width:48px"></md-icon>
+            </div>
+            <br>
 
-</html>
+            <div>{{subtext}}</div>
+
+            <br>
+            <div layout="row" layout-align="end">
+                <md-button ng-href="{{loginUrl}}" class="md-primary">На главную</md-button>
+            </div>
+        </div>
+
+        </form>
+    </div>
+
+</div>
+
+{%end%} {%define "script"%}
+
+<script type="text/javascript">
+    blank.controller("IncorrectController", function($scope) {
+        $scope.loginUrl = "https://angularjs.org/"
+        $scope.subtext = "Обратитесь к системному администратору: 0382XXXXXX"
+    })
+</script>
+
 {%end%}

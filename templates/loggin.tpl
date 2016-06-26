@@ -1,20 +1,9 @@
-{%define "base"%}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.9/css/ripples.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-</head>
-<body ng-app="mainApp" ng-cloak>
-	<div style="height: 100%;" layout="row" layout-align="center center">
+{%define "body"%}
+
+	<div style="height: 100%;" layout="row" layout-align="center center" ng-controller="LoginController">
 
 		<div class="md-whiteframe-5dp block" style="width:400px">
-			<form method="POST" action="{% .LoginAddress %}">
+			<form method="POST" action="{{loginUrl}}">
 				<md-subheader class="md-no-sticky md-primary">Авторизация</md-subheader>
 				<div class="login-block">
 					<md-input-container class="md-block">
@@ -33,20 +22,16 @@
 		</div>
 
 	</div>
-  <!-- Angular Material requires Angular.js Libraries -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- Angular Material Library -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
-    <!-- Your application bootstrap  -->
-    <script type="text/javascript">
-        var blank = angular.module('mainApp', ['ngMaterial']);
-    </script>
 
-</body>
+{%end%}
+{%define "script"%}
 
-</html>
+	<script type="text/javascript">
+
+		blank.controller("LoginController", function($scope){
+			$scope.loginUrl = "localhost:8080/"
+		})
+
+	</script>
+
 {%end%}

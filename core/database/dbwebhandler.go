@@ -1,6 +1,6 @@
 package database
 
-import "github.com/Wortecs/siriusticketmgr/web/view"
+import "github.com/Wortecs/siriusticketmgr/core/web/view"
 
 type Permision view.HeaderParams
 
